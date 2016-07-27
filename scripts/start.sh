@@ -1,16 +1,8 @@
 #!/bin/bash
-echo 'SETING CONFIGURATION'
-sleep 10
 # Disable Strict Host checking for non interactive git clones
 service mysql start || echo 'MySQL service cant be started!'
 mysql -u root -e 'create database laravel;'
 mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '' WITH GRANT OPTION;"
-cd /home/ubuntu/sites/laravel && composer install
-cp /home/ubuntu/sites/laravel/.env.example /home/ubuntu/sites/laravel/.env
-cd /home/ubuntu/sites/laravel && php artisan key:generate
-cd /home/ubuntu/sites/laravel && php artisan migrate --seed
-chmod 777 -R /home/ubuntu/sites/laravel/storage
-chmod 777 -R /home/ubuntu/sites/laravel/boostrap/cache
 mkdir -p -m 0700 /root/.ssh
 echo -e "Host *\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 
