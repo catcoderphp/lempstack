@@ -86,7 +86,6 @@ RUN chown -Rf www-data.www-data /home/ubuntu/sites/laravel/
 RUN cd /home/ubuntu/sites/laravel && composer init && composer global require "laravel/installer" && composer install && ls -lha && sleep 6
 
 # Expose Ports
-EXPOSE 443
 EXPOSE 80
 EXPOSE 3306
 
